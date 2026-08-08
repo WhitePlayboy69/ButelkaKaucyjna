@@ -2,4 +2,8 @@ package xyz.playboy
 
 import org.bukkit.plugin.java.JavaPlugin
 
-class ButelkiKaucyjne : JavaPlugin()
+class ButelkiKaucyjne : JavaPlugin() {
+    override fun onEnable() {
+        getCommand("informacje")?.setExecutor(InfoCommand())
+    }
+}

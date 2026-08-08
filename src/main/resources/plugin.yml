@@ -1,0 +1,15 @@
+name: "ButelkaKaucyjna"
+version: "non: 0.1.0"
+main: xyz.playboy.ButelkiKaucyjne
+author: "WhitePlayboy69"
+description: "Plugin który dodaje butelki kaucyjne"
+api-version: '1.20'
+
+commands:
+  informacje:
+    description: "Daje ci informacje o pluginie"
+    usage: /informacje
+
+# Jak cos wczesniej ten plik sie nazywal paper-plugin.yml
+# Ale nie dzialaja mi komendy jak jest ta nazwa wiec daje plugin.yml
+# A pisali na papermc ze trzeba dac plugin.yml by to dzialalo wiec tak daje
