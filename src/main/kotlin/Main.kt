@@ -5,5 +5,6 @@ import org.bukkit.plugin.java.JavaPlugin
 class ButelkiKaucyjne : JavaPlugin() {
     override fun onEnable() {
         getCommand("informacje")?.setExecutor(InfoCommand())
+        getCommand("nadaj")?.setExecutor(NadajCommand(this))
     }
 }
