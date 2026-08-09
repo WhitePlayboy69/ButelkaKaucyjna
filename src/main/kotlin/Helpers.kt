@@ -41,3 +41,10 @@ fun getThemMobs(): Map<EntityType, Int> = mapOf(
     EntityType.SPIDER to FromConfig.spider_chance,
     EntityType.ENDERMAN to FromConfig.enderman_chance
 )
+
+fun fix(text: String): String {
+    return text.replace("&", "§")
+}
+
+fun List<String>.complete(arg: String): List<String> =
+    filter { it.startsWith(arg, ignoreCase = true) }

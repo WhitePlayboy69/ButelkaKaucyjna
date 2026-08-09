@@ -8,7 +8,7 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
 
-const val PLUGIN_VERSION = "sure: 0.4.0"
+const val PLUGIN_VERSION = "sure: 0.5.0"
 const val GITHUB = "https://github.com/WhitePlayboy69/ButelkaKaucyjna/"
 const val DISCORD = "turekjasnoczar"
 
@@ -35,12 +35,18 @@ fun getKaucyjna(key: NamespacedKey, many: Int): ItemStack {
     val item = ItemStack(Material.GLASS_BOTTLE, many)
 
     item.editMeta {
-        it.displayName(wth("§6Butelka kaucyjna"))
-        it.lore(
-            listOf(wth("§fButelka, którą można wymienić w butelkomacie."))
-        )
+        it.displayName(wth(fix(FromConfig.kaucyjna_name)))
 
-        it.addEnchant(Enchantment.ARROW_INFINITE, 1, true)
+        if (!FromConfig.disable_kaucyjna_lore) {
+            it.lore(
+                listOf(wth(fix(FromConfig.kaucyjna_lore)))
+            )
+        }
+
+        if (FromConfig.kaucyjna_with_infinity) {
+            it.addEnchant(Enchantment.ARROW_INFINITE, 1, true)
+        }
+
         it.persistentDataContainer.set(key, PersistentDataType.STRING, "queren")
 
         // ^^^

@@ -15,3 +15,11 @@ chance-zombie-kill: 30
 chance-skeleton-kill: 30
 chance-creeper-kill: 40
 chance-enderman-kill: 60
+
+kaucyjna-name: "&6Butelka kaucyjna"
+kaucyjna-lore: "&fButelka, którą można wymienić klikając &7Shift + PPM&f."
+disable-kaucyjna-lore: false
+kaucyjna-with-infinity: true
+
+exchange-material: "gold_nugget"
+exchange-amount: 1

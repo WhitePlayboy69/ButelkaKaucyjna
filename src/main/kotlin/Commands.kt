@@ -8,6 +8,7 @@ import org.bukkit.NamespacedKey
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.command.TabExecutor
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -72,7 +73,7 @@ class NadajCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
     }
 }
 
-class PanelCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
+class PanelCommand(private val plugin: ButelkiKaucyjne) : TabExecutor {
     override fun onCommand(guy: CommandSender, what: Command, label: String, args: Array<out String>?): Boolean {
         val option = args?.getOrNull(0)
 
@@ -92,5 +93,18 @@ class PanelCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
         }
 
         return true
+    }
+
+    override fun onTabComplete(
+        who: CommandSender,
+        what: Command,
+        alias: String,
+        args: Array<out String>?
+    ): List<String> {
+        return when (args?.size) {
+            1 -> PANEL_OPTIONS.complete(args[0])
+            else -> emptyList()
+            // huj
+        }
     }
 }

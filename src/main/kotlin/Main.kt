@@ -5,6 +5,10 @@ import org.bukkit.plugin.java.JavaPlugin
 class ButelkiKaucyjne : JavaPlugin() {
     fun secondStep() {
         FromConfig.allow_greeting_message = config.getBoolean("allow-greeting-message")
+        FromConfig.kaucyjna_with_infinity = config.getBoolean("kaucyjna-with-infinity")
+        FromConfig.disable_kaucyjna_lore = config.getBoolean("disable-kaucyjna-lore")
+        FromConfig.kaucyjna_name = config.getString("kaucyjna-name") ?: "&6Butelka kaucyjna"
+        FromConfig.kaucyjna_lore = config.getString("kaucyjna-lore") ?: "&fButelka, którą można wymienić w butelkomacie."
 
         // CHANCES
 
@@ -25,6 +29,9 @@ class ButelkiKaucyjne : JavaPlugin() {
         FromConfig.enderman_chance = config.getInt("chance-enderman-kill")
 
         // CHANCES
+
+        FromConfig.exchange_material = config.getString("exchange-material") ?: "gold_nugget"
+        FromConfig.exchange_amount = config.getInt("exchange-amount")
     }
 
     override fun onEnable() {
@@ -37,5 +44,6 @@ class ButelkiKaucyjne : JavaPlugin() {
 
         server.pluginManager.registerEvents(WaitListener(), this)
         server.pluginManager.registerEvents(RealListener(this), this)
+        server.pluginManager.registerEvents(ExchangeListener(this), this)
     }
 }

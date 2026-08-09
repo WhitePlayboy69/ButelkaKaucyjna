@@ -2,6 +2,11 @@ package xyz.playboy
 
 object FromConfig {
     var allow_greeting_message = true
+    var kaucyjna_with_infinity = true
+    var disable_kaucyjna_lore = false
+
+    var kaucyjna_name = "&6Butelka kaucyjna"
+    var kaucyjna_lore = "&fButelka, którą można wymienić w butelkomacie."
 
     var coal_ore_chance = 20
     var copper_ore_chance = 15
@@ -18,4 +23,7 @@ object FromConfig {
     var creeper_chance = 40
     var spider_chance = 25
     var enderman_chance = 60
+
+    var exchange_material = "gold_nugget"
+    var exchange_amount = 1
 }
