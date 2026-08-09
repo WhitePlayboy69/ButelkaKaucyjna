@@ -1,5 +1,5 @@
 name: "ButelkaKaucyjna"
-version: "0.3.0-rc1"
+version: "0.3.0-l"
 main: xyz.playboy.ButelkiKaucyjne
 author: "WhitePlayboy69"
 description: "Plugin który dodaje butelki kaucyjne"
@@ -14,10 +14,18 @@ commands:
     permission: butelki.nadaj
     permission-message: "§cNie masz permisji by to zrobić!"
     usage: /nadaj <gracz> <ilość>
+  panel:
+    description: "Pozwala operować na pluginie"
+    permission: butelki.panel
+    permission-message: "§cNie masz permisji by to zrobić!"
+    usage: /panel <opcja>
 
 permissions:
   butelki.nadaj:
     description: "Pozwala ci nadać butelkę kaucyjną"
+    default: op
+  butelki.panel:
+    description: "Pozwala ci wykonywać komendę /panel"
     default: op
 
 # Jak cos wczesniej ten plik sie nazywal paper-plugin.yml

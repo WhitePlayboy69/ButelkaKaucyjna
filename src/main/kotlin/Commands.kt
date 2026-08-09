@@ -23,7 +23,7 @@ class InfoCommand : CommandExecutor {
                §6Wersja: §b${PLUGIN_VERSION}
                §6Github: §b${GITHUB}
                §6Discord: §b${DISCORD}
-               §a------------------------
+               §a-----------------------
             """.trimIndent()
         )
 
@@ -33,11 +33,7 @@ class InfoCommand : CommandExecutor {
 
 class NadajCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
     override fun onCommand(guy: CommandSender, what: Command, label: String, args: Array<out String>?): Boolean {
-        fun wth(text: String): Component {
-            return LegacyComponentSerializer.legacySection().deserialize(text)
-        }
-
-        val key = NamespacedKey(plugin, "custom_item_id")
+        val key = getKeyId(plugin)
 
         val rawPlayer = args?.getOrNull(0)
         val rawMany = args?.getOrNull(1)?.toIntOrNull()
@@ -62,21 +58,7 @@ class NadajCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
             return true
         }
 
-        val item = ItemStack(Material.GLASS_BOTTLE, many)
-
-        item.editMeta {
-            it.displayName(wth("§6Butelka kaucyjna"))
-            it.lore(
-                listOf(wth("§fButelka, którą można wymienić w butelkomacie."))
-            )
-
-            it.addEnchant(Enchantment.ARROW_INFINITE, 1, true)
-            it.persistentDataContainer.set(key, PersistentDataType.STRING, "queren")
-
-            // ^^^
-            // jak coś queren w chińskim to potwierdzony.
-            // Nie jestem chinczykiem po prostu po chinsku to brzmi lepiej niz verified czy cos xd
-        }
+        val item = getKaucyjna(key, many)
 
         player.inventory.addItem(item)
 
@@ -84,6 +66,29 @@ class NadajCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
             guy.sendMessage("§aPomyślnie nadano butelkę kaucyjną!")
         } else {
             guy.sendMessage("§aPomyślnie nadano §b${many} §abutelek kaucyjnych!")
+        }
+
+        return true
+    }
+}
+
+class PanelCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
+    override fun onCommand(guy: CommandSender, what: Command, label: String, args: Array<out String>?): Boolean {
+        val option = args?.getOrNull(0)
+
+        if (option in PANEL_OPTIONS) {
+            when (option) {
+                "reload" -> {
+                    plugin.reloadConfig()
+                    plugin.secondStep()
+                    guy.sendMessage("§aPomyślnie zreloadowano config!")
+                }
+                "help" -> {
+                    guy.sendMessage(PLUGIN_HELP)
+                }
+            }
+        } else {
+            guy.sendMessage("§cNieznana opcja! Opcje: §b(${PANEL_OPTIONS.joinToString(", ")})§c!")
         }
 
         return true

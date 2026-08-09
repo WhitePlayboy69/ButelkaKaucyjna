@@ -1,0 +1,3 @@
+# Reguluje wiadomość powitalną
+# która się wyświetla u każdego po wbiciu na serwer
+allow-greeting-message: true
