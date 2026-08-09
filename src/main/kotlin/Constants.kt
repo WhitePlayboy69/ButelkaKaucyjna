@@ -8,7 +8,7 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
 
-const val PLUGIN_VERSION = "sure: 0.3.0"
+const val PLUGIN_VERSION = "sure: 0.4.0"
 const val GITHUB = "https://github.com/WhitePlayboy69/ButelkaKaucyjna/"
 const val DISCORD = "turekjasnoczar"
 
@@ -17,26 +17,6 @@ val PLUGIN_HELP = """
     §a/nadaj <gracz?> <ilość?>: §bNadaje <ilość> butelek kaucyjnych graczowi <gracz>
     §a/panel <opcja>: §bPozwala wykonać rzeczy administratorskie związane z pluginem
 """.trimIndent()
-
-val KAUCJA_QUALIFIED = mapOf(
-    Material.COAL_ORE to 20,
-    Material.DEEPSLATE_COAL_ORE to 20,
-    Material.COPPER_ORE to 15,
-    Material.DEEPSLATE_COPPER_ORE to 20,
-    Material.IRON_ORE to 30,
-    Material.DEEPSLATE_IRON_ORE to 30,
-    Material.GOLD_ORE to 30,
-    Material.DEEPSLATE_GOLD_ORE to 30,
-    Material.EMERALD_ORE to 60,
-    Material.DEEPSLATE_EMERALD_ORE to 60,
-    Material.REDSTONE_ORE to 20,
-    Material.DEEPSLATE_REDSTONE_ORE to 20,
-    Material.LAPIS_ORE to 15,
-    Material.DEEPSLATE_LAPIS_ORE to 15,
-    Material.DIAMOND_ORE to 50,
-    Material.DEEPSLATE_DIAMOND_ORE to 50,
-    Material.ANCIENT_DEBRIS to 60
-)
 
 val PANEL_OPTIONS = listOf(
     "reload",
