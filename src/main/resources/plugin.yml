@@ -1,0 +1,33 @@
+name: "ButelkaKaucyjna"
+version: "0.6.0"
+main: xyz.playboy.ButelkiKaucyjne
+author: "WhitePlayboy69"
+description: "Plugin który dodaje butelki kaucyjne"
+api-version: '1.20'
+
+commands:
+  informacje:
+    description: "Daje ci informacje o pluginie"
+    usage: /informacje
+  nadaj:
+    description: "Nadaje tobie/komuś butelkę kaucyjną"
+    permission: butelki.nadaj
+    permission-message: "§cNie masz permisji by to zrobić!"
+    usage: /nadaj <gracz> <ilość>
+  panel:
+    description: "Pozwala operować na pluginie"
+    permission: butelki.panel
+    permission-message: "§cNie masz permisji by to zrobić!"
+    usage: /panel <opcja>
+
+permissions:
+  butelki.nadaj:
+    description: "Pozwala ci nadać butelkę kaucyjną"
+    default: op
+  butelki.panel:
+    description: "Pozwala ci wykonywać komendę /panel"
+    default: op
+
+# Jak cos wczesniej ten plik sie nazywal paper-plugin.yml
+# Ale nie dzialaja mi komendy jak jest ta nazwa wiec daje plugin.yml
+# A pisali na papermc ze trzeba dac plugin.yml by to dzialalo wiec tak daje
