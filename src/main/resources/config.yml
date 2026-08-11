@@ -22,4 +22,8 @@ disable-kaucyjna-lore: false
 kaucyjna-with-infinity: true
 
 exchange-material: "gold_nugget"
-exchange-amount: 1
+
+# exchange-no-amount: if economy is NOT set up on this server.
+exchange-no-amount: 1
+# exchange-yes-amount: if economy is set up on this server. (Vault + some economy plugin, like EssentialsX)
+exchange-yes-amount: 0.5

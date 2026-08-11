@@ -28,6 +28,13 @@ permissions:
     description: "Pozwala ci wykonywać komendę /panel"
     default: op
 
+dependencies:
+  server:
+    Vault:
+      load: BEFORE
+      required: false
+      join-classpath: true
+
 # Jak cos wczesniej ten plik sie nazywal paper-plugin.yml
 # Ale nie dzialaja mi komendy jak jest ta nazwa wiec daje plugin.yml
 # A pisali na papermc ze trzeba dac plugin.yml by to dzialalo wiec tak daje

@@ -25,5 +25,10 @@ object FromConfig {
     var enderman_chance = 60
 
     var exchange_material = "gold_nugget"
-    var exchange_amount = 1
+    var exchange_no_amount = 1
+    var exchange_yes_amount = 0.5
+}
+
+object Inside {
+    var with_vault = false
 }

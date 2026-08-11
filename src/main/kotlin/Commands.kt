@@ -1,18 +1,11 @@
 package xyz.playboy
 
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.Bukkit
-import org.bukkit.Material
-import org.bukkit.NamespacedKey
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabExecutor
-import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
-import org.bukkit.persistence.PersistentDataType
 
 // §§§§§§§§§§§§§§§§§§§§
 
@@ -86,6 +79,9 @@ class PanelCommand(private val plugin: ButelkiKaucyjne) : TabExecutor {
                 }
                 "help" -> {
                     guy.sendMessage(PLUGIN_HELP)
+                }
+                "check-vault" -> {
+                    guy.sendMessage("§bCzy butelki kaucyjne działają na ekonomii: ${Inside.with_vault.humanify()}")
                 }
             }
         } else {

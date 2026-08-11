@@ -82,10 +82,20 @@ class ExchangeListener(private val plugin: ButelkiKaucyjne) : Listener {
         val amount = holds.amount
 
         if (alright) {
-            who.inventory.setItemInMainHand(ItemStack.empty())
-            who.inventory.addItem(ItemStack((Material.matchMaterial(FromConfig.exchange_material) ?: Material.GOLD_NUGGET), (amount * FromConfig.exchange_amount)))
-
-            who.sendMessage("§aZamieniłeś butelki kaucyjne na §6${amount} §azłotych monetek!")
+            if (Inside.with_vault) {
+                val conversion = holds.amount * FromConfig.exchange_yes_amount
+                val response = plugin.economy?.depositPlayer(who, conversion)
+                if (response?.transactionSuccess() == true) {
+                    who.inventory.setItemInMainHand(ItemStack.empty())
+                    who.sendMessage("§aZamieniłeś butelki kaucyjne na §6${conversion}$!")
+                } else {
+                    who.sendMessage("§cNie można było wymienić butelek kaucyjnych! Skontaktuj się z administratorem.")
+                }
+            } else {
+                who.inventory.setItemInMainHand(ItemStack.empty())
+                who.inventory.addItem(ItemStack((Material.matchMaterial(FromConfig.exchange_material) ?: Material.GOLD_NUGGET), (amount * FromConfig.exchange_no_amount)))
+                who.sendMessage("§aZamieniłeś butelki kaucyjne na §6${amount} §azłotych monetek!")
+            }
         }
     }
 }

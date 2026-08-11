@@ -48,3 +48,7 @@ fun fix(text: String): String {
 
 fun List<String>.complete(arg: String): List<String> =
     filter { it.startsWith(arg, ignoreCase = true) }
+
+fun Boolean.humanify(): String {
+    return if (this) "§aTak" else "§cNie"
+}

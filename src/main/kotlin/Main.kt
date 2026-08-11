@@ -1,8 +1,12 @@
 package xyz.playboy
 
 import org.bukkit.plugin.java.JavaPlugin
+import net.milkbowl.vault.economy.Economy
 
 class ButelkiKaucyjne : JavaPlugin() {
+    var economy: Economy? = null
+        private set
+
     fun secondStep() {
         FromConfig.allow_greeting_message = config.getBoolean("allow-greeting-message")
         FromConfig.kaucyjna_with_infinity = config.getBoolean("kaucyjna-with-infinity")
@@ -31,12 +35,26 @@ class ButelkiKaucyjne : JavaPlugin() {
         // CHANCES
 
         FromConfig.exchange_material = config.getString("exchange-material") ?: "gold_nugget"
-        FromConfig.exchange_amount = config.getInt("exchange-amount")
+        FromConfig.exchange_no_amount = config.getInt("exchange-no-amount")
+        FromConfig.exchange_yes_amount = config.getDouble("exchange-yes-amount")
+    }
+
+    private fun makeThemVault(): Boolean {
+        if (server.pluginManager.getPlugin("Vault") == null) {
+            return false
+        }
+
+        val rsp = server.servicesManager.getRegistration(Economy::class.java) ?: return false
+        economy = rsp.provider
+
+        return economy != null
     }
 
     override fun onEnable() {
         saveDefaultConfig()
         secondStep()
+
+        Inside.with_vault = makeThemVault()
 
         getCommand("informacje")?.setExecutor(InfoCommand())
         getCommand("nadaj")?.setExecutor(NadajCommand(this))
