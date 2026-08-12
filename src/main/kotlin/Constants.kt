@@ -8,7 +8,7 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
 
-const val PLUGIN_VERSION = "sure: 0.6.0"
+const val PLUGIN_VERSION = "sure: 1.0"
 const val GITHUB = "https://github.com/WhitePlayboy69/ButelkaKaucyjna/"
 const val DISCORD = "turekjasnoczar"
 

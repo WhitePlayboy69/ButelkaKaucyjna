@@ -50,5 +50,13 @@ fun List<String>.complete(arg: String): List<String> =
     filter { it.startsWith(arg, ignoreCase = true) }
 
 fun Boolean.humanify(): String {
-    return if (this) "§aTak" else "§cNie"
+    return if (this) fix(Messages.YES) else fix(Messages.NO)
+}
+
+fun String.replaceify(data: Map<String, Any>): String {
+    val regex = Regex("""\[\(([^)]+)\)]""") // ouu shii
+    return regex.replace(this) { match ->
+        val key = match.groupValues[1]
+        data[key]?.toString() ?: match.value
+    }
 }

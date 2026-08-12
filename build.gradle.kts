@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "xyz.playboy"
-version = "sure0.6.0"
+version = "sure1.0"
 
 java {
     toolchain {

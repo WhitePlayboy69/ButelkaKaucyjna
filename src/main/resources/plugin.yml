@@ -1,5 +1,5 @@
 name: "ButelkaKaucyjna"
-version: "0.6.0"
+version: "1.0"
 main: xyz.playboy.ButelkiKaucyjne
 author: "WhitePlayboy69"
 description: "Plugin który dodaje butelki kaucyjne"
@@ -11,22 +11,32 @@ commands:
     usage: /informacje
   nadaj:
     description: "Nadaje tobie/komuś butelkę kaucyjną"
-    permission: butelki.nadaj
-    permission-message: "§cNie masz permisji by to zrobić!"
     usage: /nadaj <gracz> <ilość>
   panel:
     description: "Pozwala operować na pluginie"
-    permission: butelki.panel
-    permission-message: "§cNie masz permisji by to zrobić!"
     usage: /panel <opcja>
 
 permissions:
   butelki.nadaj:
     description: "Pozwala ci nadać butelkę kaucyjną"
     default: op
-  butelki.panel:
-    description: "Pozwala ci wykonywać komendę /panel"
+  butelki.panel.reload:
+    description: "Pozwala ci reloadować config pluginu"
     default: op
+  butelki.panel.check-vault:
+    description: "Pozwala ci sprawdzić czy butelki kaucyjne działają na zasaach ekonomii"
+    default: op
+  butelki.panel.help:
+    description: "Pozwala ci sprawdzić pomoc o butelkach kaucyjnych"
+    default: true
+
+  butelki.panel.*:
+    description: "Pozwala ci wypisać wszystkie opcje z /panel"
+    default: op
+    children:
+      butelki.panel.reload: true
+      butelki.panel.check-vault: true
+      butelki.panel.help: true
 
 dependencies:
   server:

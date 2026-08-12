@@ -14,6 +14,8 @@ class ButelkiKaucyjne : JavaPlugin() {
         FromConfig.kaucyjna_name = config.getString("kaucyjna-name") ?: "&6Butelka kaucyjna"
         FromConfig.kaucyjna_lore = config.getString("kaucyjna-lore") ?: "&fButelka, którą można wymienić w butelkomacie."
 
+        Inside.with_vault = if (Inside.able_to_vault) config.getBoolean("use-vault-if-possible") else false
+
         // CHANCES
 
         FromConfig.coal_ore_chance = config.getInt("chance-coal-ore")
@@ -39,6 +41,29 @@ class ButelkiKaucyjne : JavaPlugin() {
         FromConfig.exchange_yes_amount = config.getDouble("exchange-yes-amount")
     }
 
+    fun thirdStep() {
+        Messages.unsufficient_permission = config.getString("message-unsufficient-permissions") ?: "&cNie masz wystarczających permisji by to zrobić!"
+        Messages.successfully_config_reloaded = config.getString("message-successfully-config-reloaded") ?: "&aPomyślnie zreloadowano config!"
+        Messages.player_is_offline = config.getString("message-player-is-offline") ?: "&cTen gracz jest offline!"
+        Messages.kaucja_successfully_given = config.getString("message-kaucja-successfully-given") ?: "&aPomyślnie nadano butelkę kaucyjną!"
+        Messages.wrong_args_nadaj = config.getString("message-wrong-args-nadaj") ?: "&cPoprawne użycie: &f/nadaj <gracz> <ilość>&c!"
+        Messages.greeting_first = config.getString("message-greeting-first") ?: "&aWitaj na serwerze!"
+        Messages.greeting_second = config.getString("message-greeting-second") ?: "&aZbieraj &bbutelki kaucyjne &akopiąc i zabijając!"
+        Messages.kaucja_from_this_block = config.getString("message-kaucja-from-this-block") ?: "&aZdobyłeś kaucję z tego bloku!"
+        Messages.kaucja_from_this_mob = config.getString("message-kaucja-from-this-mob") ?: "&aZdobyłeś kaucję z tego moba!"
+        Messages.could_not_exchange = config.getString("message-could-not-exchange") ?: "&cNie można było wymienić butelek kaucyjnych! Skontaktuj się z administratorem."
+
+        Messages.kaucja_successfully_granted = config.getString("message-kaucja-successfully-granted") ?: "&aPomyślnie nadano &b[(amount)] &abutelek kaucyjnych!"
+        Messages.can_economy_work = config.getString("message-can-economy-work") ?: "&bCzy butelki kaucyjne mogą działać na ekonomii: [(canthey)]"
+        Messages.is_economy_on = config.getString("message-is-economy-on") ?: "&bCzy butelki kaucyjne aktualnie działają na ekonomii: [(on)]"
+        Messages.unknown_panel_option = config.getString("message-unknown-panel-option") ?: "&cNieznana opcja! Opcje: &b([(options)])&c!"
+        Messages.successfully_exchanged_vault = config.getString("message-successfully-exchanged-vault") ?: "&aZamieniłeś butelki kaucyjne na &6[(money)]$!"
+        Messages.successfully_exchanged_item = config.getString("message-successfully-exchanged-item") ?: "&aZamieniłeś butelki kaucyjne na &6[(amount)] &azłotych monetek!"
+
+        Messages.YES = config.getString("message-yes") ?: "&aTak"
+        Messages.NO = config.getString("message-no") ?: "&cNie"
+    }
+
     private fun makeThemVault(): Boolean {
         if (server.pluginManager.getPlugin("Vault") == null) {
             return false
@@ -51,10 +76,11 @@ class ButelkiKaucyjne : JavaPlugin() {
     }
 
     override fun onEnable() {
+        Inside.able_to_vault = makeThemVault()
+
         saveDefaultConfig()
         secondStep()
-
-        Inside.with_vault = makeThemVault()
+        thirdStep()
 
         getCommand("informacje")?.setExecutor(InfoCommand())
         getCommand("nadaj")?.setExecutor(NadajCommand(this))

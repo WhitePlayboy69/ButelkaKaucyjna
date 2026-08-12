@@ -27,39 +27,43 @@ class InfoCommand : CommandExecutor {
 
 class NadajCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
     override fun onCommand(guy: CommandSender, what: Command, label: String, args: Array<out String>?): Boolean {
-        val key = getKeyId(plugin)
+        if (guy.hasPermission("butelki.nadaj")) {
+            val key = getKeyId(plugin)
 
-        val rawPlayer = args?.getOrNull(0)
-        val rawMany = args?.getOrNull(1)?.toIntOrNull()
-        val player: Player?
-        val many: Int?
+            val rawPlayer = args?.getOrNull(0)
+            val rawMany = args?.getOrNull(1)?.toIntOrNull()
+            val player: Player?
+            val many: Int?
 
-        if (rawPlayer != null) {
-            player = Bukkit.getPlayerExact(rawPlayer)
-        } else {
-            if (guy is Player) {
-                player = guy
+            if (rawPlayer != null) {
+                player = Bukkit.getPlayerExact(rawPlayer)
             } else {
-                guy.sendMessage("§cPoprawne użycie: §f/nadaj <gracz> <ilość>§c!")
+                if (guy is Player) {
+                    player = guy
+                } else {
+                    guy.sendMessage(fix(Messages.wrong_args_nadaj))
+                    return true
+                }
+            } // nie ma return if bo boli w oczy
+
+            if (player != null) {
+                many = rawMany ?: 1
+            } else {
+                guy.sendMessage(fix(Messages.player_is_offline))
                 return true
             }
-        } // nie ma return if bo boli w oczy
 
-        if (player != null) {
-            many = rawMany ?: 1
+            val item = getKaucyjna(key, many)
+
+            player.inventory.addItem(item)
+
+            if (many == 1) {
+                guy.sendMessage(fix(Messages.kaucja_successfully_given))
+            } else {
+                guy.sendMessage(fix(Messages.kaucja_successfully_granted.replaceify(mapOf("amount" to many))))
+            }
         } else {
-            guy.sendMessage("§cTen gracz jest offline!")
-            return true
-        }
-
-        val item = getKaucyjna(key, many)
-
-        player.inventory.addItem(item)
-
-        if (many == 1) {
-            guy.sendMessage("§aPomyślnie nadano butelkę kaucyjną!")
-        } else {
-            guy.sendMessage("§aPomyślnie nadano §b${many} §abutelek kaucyjnych!")
+            guy.sendMessage(fix(Messages.unsufficient_permission))
         }
 
         return true
@@ -73,19 +77,33 @@ class PanelCommand(private val plugin: ButelkiKaucyjne) : TabExecutor {
         if (option in PANEL_OPTIONS) {
             when (option) {
                 "reload" -> {
-                    plugin.reloadConfig()
-                    plugin.secondStep()
-                    guy.sendMessage("§aPomyślnie zreloadowano config!")
+                    if (guy.hasPermission("butelki.panel.reload")) {
+                        plugin.reloadConfig()
+                        plugin.secondStep()
+                        plugin.thirdStep()
+                        guy.sendMessage(fix(Messages.successfully_config_reloaded))
+                    } else {
+                        guy.sendMessage(fix(Messages.unsufficient_permission))
+                    }
                 }
                 "help" -> {
-                    guy.sendMessage(PLUGIN_HELP)
+                    if (guy.hasPermission("butelki.panel.help")) {
+                        guy.sendMessage(PLUGIN_HELP)
+                    } else {
+                        guy.sendMessage(fix(Messages.unsufficient_permission))
+                    }
                 }
                 "check-vault" -> {
-                    guy.sendMessage("§bCzy butelki kaucyjne działają na ekonomii: ${Inside.with_vault.humanify()}")
+                    if (guy.hasPermission("butelki.panel.check-vault")) {
+                        guy.sendMessage(fix(Messages.can_economy_work.replaceify(mapOf("toggle" to Inside.able_to_vault.humanify()))))
+                        guy.sendMessage(fix(Messages.is_economy_on.replaceify(mapOf("toggle" to Inside.with_vault.humanify()))))
+                    } else {
+                        guy.sendMessage(fix(Messages.unsufficient_permission))
+                    }
                 }
             }
         } else {
-            guy.sendMessage("§cNieznana opcja! Opcje: §b(${PANEL_OPTIONS.joinToString(", ")})§c!")
+            guy.sendMessage(fix(Messages.unknown_panel_option.replaceify(mapOf("options" to PANEL_OPTIONS.joinToString(", ")))))
         }
 
         return true

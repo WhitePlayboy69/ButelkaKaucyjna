@@ -21,8 +21,8 @@ class WaitListener : Listener {
         val who = event.player
 
         if (FromConfig.allow_greeting_message) {
-            who.sendMessage("§aWitaj na serwerze!")
-            who.sendMessage("§aZbieraj §bbutelki kaucyjne §akopiąc!")
+            who.sendMessage(fix(Messages.greeting_first))
+            who.sendMessage(fix(Messages.greeting_second))
         }
     }
 }
@@ -40,7 +40,7 @@ class RealListener(private val plugin: ButelkiKaucyjne) : Listener {
                 val item = getKaucyjna(key, 1)
 
                 who.world.dropItemNaturally(what.location, item)
-                who.sendMessage("§aZdobyłeś kaucję z tego bloku!")
+                who.sendMessage(fix(Messages.kaucja_from_this_block))
             }
         }
     }
@@ -58,7 +58,7 @@ class RealListener(private val plugin: ButelkiKaucyjne) : Listener {
                     val item = getKaucyjna(key, 1)
 
                     attacker.world.dropItemNaturally(victim.location, item)
-                    attacker.sendMessage("§aZdobyłeś kaucję z tego moba!")
+                    attacker.sendMessage(fix(Messages.kaucja_from_this_mob))
                 }
             }
         }
@@ -87,14 +87,14 @@ class ExchangeListener(private val plugin: ButelkiKaucyjne) : Listener {
                 val response = plugin.economy?.depositPlayer(who, conversion)
                 if (response?.transactionSuccess() == true) {
                     who.inventory.setItemInMainHand(ItemStack.empty())
-                    who.sendMessage("§aZamieniłeś butelki kaucyjne na §6${conversion}$!")
+                    who.sendMessage(fix(Messages.successfully_exchanged_vault.replaceify(mapOf("money" to conversion))))
                 } else {
-                    who.sendMessage("§cNie można było wymienić butelek kaucyjnych! Skontaktuj się z administratorem.")
+                    who.sendMessage(fix(Messages.could_not_exchange))
                 }
             } else {
                 who.inventory.setItemInMainHand(ItemStack.empty())
                 who.inventory.addItem(ItemStack((Material.matchMaterial(FromConfig.exchange_material) ?: Material.GOLD_NUGGET), (amount * FromConfig.exchange_no_amount)))
-                who.sendMessage("§aZamieniłeś butelki kaucyjne na §6${amount} §azłotych monetek!")
+                who.sendMessage(fix(Messages.successfully_exchanged_item.replaceify(mapOf("amount" to amount))))
             }
         }
     }
