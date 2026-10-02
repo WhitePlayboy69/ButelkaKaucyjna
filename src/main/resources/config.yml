@@ -1,3 +1,5 @@
+language: "en_us"
+
 allow-greeting-message: true
 
 chance-copper-ore: 15
@@ -28,26 +30,3 @@ exchange-material: "gold_nugget"
 # exchange-yes-amount: if economy is set up on this server.
 exchange-no-amount: 1
 exchange-yes-amount: 0.5
-
-# messages
-
-message-could-not-exchange: "&cNie można było wymienić butelek kaucyjnych! Skontaktuj się z administratorem."
-message-greeting-first: "&aWitaj na serwerze!"
-message-greeting-second: "&aZbieraj &bbutelki kaucyjne &akopiąc i zabijając!"
-message-kaucja-from-this-block: "&aZdobyłeś kaucję z tego bloku!"
-message-kaucja-from-this-mob: "&aZdobyłeś kaucję z tego moba!"
-message-kaucja-successfully-given: "&aPomyślnie nadano butelkę kaucyjną!"
-message-player-is-offline: "&cTen gracz jest offline!"
-message-successfully-config-reloaded: "&aPomyślnie zreloadowano config!"
-message-unsufficient-permissions: "&cNie masz wystarczających permisji by to zrobić!"
-message-wrong-args-nadaj: "&cPoprawne użycie: &f/nadaj <gracz> <ilość>&c!"
-
-message-can-economy-work: "&bCzy butelki kaucyjne mogą działać na ekonomii: [(toggle)]" # [(toggle)]
-message-is-economy-on: "&bCzy butelki kaucyjne aktualnie działają na ekonomii: [(toggle)]" # [(toggle)]
-message-kaucja-successfully-granted: "&aPomyślnie nadano &b[(amount)] &abutelek kaucyjnych!" # [(amount)]
-message-unknown-panel-option: "&cNieznana opcja! Opcje: &b([(options)])&c!" # [(options)]
-message-successfully-exchanged-vault: "&aZamieniłeś butelki kaucyjne na &6[(money)]$!" # [(money)]
-message-successfully-exchanged-item: "&aZamieniłeś butelki kaucyjne na &6[(amount)] &azłotych monetek!" # [(amount)]
-
-message-yes: "&aTak"
-message-no: "&cNie"

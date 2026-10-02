@@ -1,6 +1,8 @@
 package xyz.playboy
 
 object FromConfig {
+    var language = "en_us"
+
     var allow_greeting_message = true
     var kaucyjna_with_infinity = true
     var disable_kaucyjna_lore = false

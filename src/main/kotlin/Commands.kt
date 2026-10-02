@@ -79,6 +79,7 @@ class PanelCommand(private val plugin: ButelkiKaucyjne) : TabExecutor {
                 "reload" -> {
                     if (guy.hasPermission("butelki.panel.reload")) {
                         plugin.reloadConfig()
+                        plugin.language()
                         plugin.secondStep()
                         plugin.thirdStep()
                         guy.sendMessage(fix(Messages.successfully_config_reloaded))
