@@ -4,15 +4,15 @@ messages:
     greeting-second: "&aGet &bdeposit bottles &aby mining and killing mobs!"
     player-is-offline: "&cThis player is offline!"
     successfully-config-reloaded: "&aConfig was successfully reloaded!"
-    unsufficient-permissions: "&cYou don't have sufficient permissions to do this!"
+    insufficient-permissions: "&cYou don't have sufficient permissions to do this!"
     wrong-args-nadaj: "&cCorrect usage: &f/nadaj <player> <amount>&c!"
     kaucja-successfully-granted: "&aSuccessfully granted &b[(amount)] &adeposit bottles!" # [(amount)]
     unknown-panel-option: "&cUnknown option! Possible options: &b([(options)])&c!" # [(options)]
 
   gameplay:
     could-not-exchange: "&cCouldn't exchange deposit bottles! Contact with server's administrator."
-    kaucja-from-this-block: "&aYou got a deposit bottle from this block!"
-    kaucja-from-this-mob: "&aYou got a deposit bottle from this mob!"
+    kaucja-from-this-block: "&aYou got a deposit bottle from this block!" # [(block)]
+    kaucja-from-this-mob: "&aYou got a deposit bottle from this mob!" # [(mob)]
     kaucja-successfully-given: "&aSuccessfully granted a deposit bottle!"
     successfully-exchanged-vault: "&aSuccessfully exchanged deposit bottles for &6[(money)]$!" # [(money)]
     successfully-exchanged-item: "&aSuccessfully exchanged deposit bottles for &6[(amount)] &agolden nuggets!" # [(amount)]
@@ -22,5 +22,7 @@ messages:
     is-economy-on: "&bDo deposit bottles work on Vault: [(toggle)]" # [(toggle)]
 
   other:
-    yes: "&aYes"
-    no: "&cNo"
+    kaucyjna-name: "&6Deposit bottle"
+    kaucyjna-lore: "&fBottle, which you can exchange by clicking &7Shift + Right Click&f."
+    easy-yes: "&aYes"
+    easy-no: "&cNo"

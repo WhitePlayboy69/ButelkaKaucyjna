@@ -12,13 +12,14 @@ import org.bukkit.entity.Player
 class InfoCommand : CommandExecutor {
     override fun onCommand(guy: CommandSender, what: Command, label: String, args: Array<out String>?): Boolean {
         guy.sendMessage(
-            """
-               §a--- BUTELKI KAUCYJNE ---
-               §6Wersja: §b${PLUGIN_VERSION}
-               §6Github: §b${GITHUB}
-               §6Discord: §b${DISCORD}
-               §a-----------------------
-            """.trimIndent()
+            fix("""
+               &a--- BUTELKI KAUCYJNE ---
+               &6Wersja: &b${PLUGIN_VERSION}
+               &6Modrinth: &b${MODRINTH}
+               &6Github: &b${GITHUB}
+               &6Discord: &b${DISCORD}
+               &a-----------------------
+            """).trimIndent()
         )
 
         return true
@@ -63,7 +64,7 @@ class NadajCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
                 guy.sendMessage(fix(Messages.kaucja_successfully_granted.replaceify(mapOf("amount" to many))))
             }
         } else {
-            guy.sendMessage(fix(Messages.unsufficient_permission))
+            guy.sendMessage(fix(Messages.insufficient_permission))
         }
 
         return true
@@ -84,14 +85,14 @@ class PanelCommand(private val plugin: ButelkiKaucyjne) : TabExecutor {
                         plugin.thirdStep()
                         guy.sendMessage(fix(Messages.successfully_config_reloaded))
                     } else {
-                        guy.sendMessage(fix(Messages.unsufficient_permission))
+                        guy.sendMessage(fix(Messages.insufficient_permission))
                     }
                 }
                 "help" -> {
                     if (guy.hasPermission("butelki.panel.help")) {
-                        guy.sendMessage(PLUGIN_HELP)
+                        guy.sendMessage(fix(PLUGIN_HELP))
                     } else {
-                        guy.sendMessage(fix(Messages.unsufficient_permission))
+                        guy.sendMessage(fix(Messages.insufficient_permission))
                     }
                 }
                 "check-vault" -> {
@@ -99,7 +100,7 @@ class PanelCommand(private val plugin: ButelkiKaucyjne) : TabExecutor {
                         guy.sendMessage(fix(Messages.can_economy_work.replaceify(mapOf("toggle" to Inside.able_to_vault.humanify()))))
                         guy.sendMessage(fix(Messages.is_economy_on.replaceify(mapOf("toggle" to Inside.with_vault.humanify()))))
                     } else {
-                        guy.sendMessage(fix(Messages.unsufficient_permission))
+                        guy.sendMessage(fix(Messages.insufficient_permission))
                     }
                 }
             }

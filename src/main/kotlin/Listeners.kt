@@ -30,7 +30,9 @@ class WaitListener : Listener {
 class RealListener(private val plugin: ButelkiKaucyjne) : Listener {
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     fun onMine(event: BlockBreakEvent) {
-        val key = getKeyId(plugin) // zapomnialem wymazac ,,custom item id,, z poradnika xddddd
+        val block = event.block.type.key.key
+
+        val key = getKeyId(plugin)
 
         val who = event.player
         val what = event.block
@@ -40,7 +42,7 @@ class RealListener(private val plugin: ButelkiKaucyjne) : Listener {
                 val item = getKaucyjna(key, 1)
 
                 who.world.dropItemNaturally(what.location, item)
-                who.sendMessage(fix(Messages.kaucja_from_this_block))
+                who.sendMessage(fix(Messages.kaucja_from_this_block.replaceify(mapOf("block" to block.replace("_", " ")))))
             }
         }
     }
@@ -58,7 +60,7 @@ class RealListener(private val plugin: ButelkiKaucyjne) : Listener {
                     val item = getKaucyjna(key, 1)
 
                     attacker.world.dropItemNaturally(victim.location, item)
-                    attacker.sendMessage(fix(Messages.kaucja_from_this_mob))
+                    attacker.sendMessage(fix(Messages.kaucja_from_this_mob.replaceify(mapOf("mob" to victim.type.key.key))))
                 }
             }
         }

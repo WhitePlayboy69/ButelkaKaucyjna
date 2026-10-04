@@ -4,15 +4,15 @@ messages:
     greeting-second: "&aZbieraj &bbutelki kaucyjne &akopiąc i zabijając!"
     player-is-offline: "&cTen gracz jest offline!"
     successfully-config-reloaded: "&aPomyślnie zreloadowano config!"
-    unsufficient-permissions: "&cNie masz wystarczających permisji by to zrobić!"
+    insufficient-permissions: "&cNie masz wystarczających permisji by to zrobić!"
     wrong-args-nadaj: "&cPoprawne użycie: &f/nadaj <gracz> <ilość>&c!"
     kaucja-successfully-granted: "&aPomyślnie nadano &b[(amount)] &abutelek kaucyjnych!" # [(amount)]
     unknown-panel-option: "&cNieznana opcja! Opcje: &b([(options)])&c!" # [(options)]
 
   gameplay:
     could-not-exchange: "&cNie można było wymienić butelek kaucyjnych! Skontaktuj się z administratorem."
-    kaucja-from-this-block: "&aZdobyłeś kaucję z tego bloku!"
-    kaucja-from-this-mob: "&aZdobyłeś kaucję z tego moba!"
+    kaucja-from-this-block: "&aZdobyłeś kaucję z tego bloku!" # [(block)]
+    kaucja-from-this-mob: "&aZdobyłeś kaucję z tego moba!" # [(mob)]
     kaucja-successfully-given: "&aPomyślnie nadano butelkę kaucyjną!"
     successfully-exchanged-vault: "&aZamieniłeś butelki kaucyjne na &6[(money)]$!" # [(money)]
     successfully-exchanged-item: "&aZamieniłeś butelki kaucyjne na &6[(amount)] &azłotych monetek!" # [(amount)]
@@ -22,5 +22,7 @@ messages:
     is-economy-on: "&bCzy butelki kaucyjne aktualnie działają na ekonomii: [(toggle)]" # [(toggle)]
 
   other:
-    yes: "&aTak"
-    no: "&cNie"
+    kaucyjna-name: "&6Butelka kaucyjna"
+    kaucyjna-lore: "&fButelka, którą można wymienić klikając &7Shift + PPM&f."
+    easy-yes: "&aTak"
+    easy-no: "&cNie"

@@ -8,14 +8,15 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
 
-const val PLUGIN_VERSION = "sure: 1.1"
+const val PLUGIN_VERSION = "sure: 1.1.1"
 const val GITHUB = "https://github.com/WhitePlayboy69/ButelkaKaucyjna/"
+const val MODRINTH = "https://modrinth.com/project/uHJUmqtK"
 const val DISCORD = "turekjasnoczar"
 
 val PLUGIN_HELP = """
-    §a/informacje: §bPokazuje informacje o pluginie
-    §a/nadaj <gracz?> <ilość?>: §bNadaje <ilość> butelek kaucyjnych graczowi <gracz>
-    §a/panel <opcja>: §bPozwala wykonać rzeczy administratorskie związane z pluginem
+    &a/informacje: &bPokazuje informacje o pluginie
+    &a/nadaj <gracz?> <ilość?>: &bNadaje <ilość> butelek kaucyjnych graczowi <gracz>
+    &a/panel <opcja>: &bPozwala wykonać rzeczy administratorskie związane z pluginem
 """.trimIndent()
 
 val PANEL_OPTIONS = listOf(

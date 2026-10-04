@@ -7,8 +7,8 @@ object FromConfig {
     var kaucyjna_with_infinity = true
     var disable_kaucyjna_lore = false
 
-    var kaucyjna_name = "&6Butelka kaucyjna"
-    var kaucyjna_lore = "&fButelka, którą można wymienić w butelkomacie."
+    var kaucyjna_name = "&6Deposit bottle"
+    var kaucyjna_lore = "&fBottle, which you can exchange by clicking &7Shift + Right Click&f."
 
     var coal_ore_chance = 20
     var copper_ore_chance = 15
@@ -32,26 +32,26 @@ object FromConfig {
 }
 
 object Messages {
-    var unsufficient_permission = "§cNie masz wystarczających permisji by to zrobić!"
-    var successfully_config_reloaded = "&aPomyślnie zreloadowano config!"
-    var player_is_offline = "&cTen gracz jest offline!"
-    var kaucja_successfully_given = "&aPomyślnie nadano butelkę kaucyjną!"
-    var wrong_args_nadaj = "&cPoprawne użycie: &f/nadaj <gracz> <ilość>&c!"
-    var greeting_first = "&aWitaj na serwerze!"
-    var greeting_second = "&aZbieraj &bbutelki kaucyjne &akopiąc i zabijając!"
-    var kaucja_from_this_block = "&aZdobyłeś kaucję z tego bloku!"
-    var kaucja_from_this_mob = "&aZdobyłeś kaucję z tego moba!"
-    var could_not_exchange = "&cNie można było wymienić butelek kaucyjnych! Skontaktuj się z administratorem."
+    var insufficient_permission = "&cYou don't have sufficient permissions to do this!"
+    var successfully_config_reloaded = "&aConfig was successfully reloaded!"
+    var player_is_offline = "&cThis player is offline!"
+    var kaucja_successfully_given = "&aSuccessfully granted a deposit bottle!"
+    var wrong_args_nadaj = "&cCorrect usage: &f/nadaj <player> <amount>&c!"
+    var greeting_first = "&aWelcome to the server!"
+    var greeting_second = "&aGet &bdeposit bottles &aby mining and killing mobs!"
+    var kaucja_from_this_block = "&aYou got a deposit bottle from this block!"
+    var kaucja_from_this_mob = "&aYou got a deposit bottle from this mob!"
+    var could_not_exchange = "&cCouldn't exchange deposit bottles! Contact with server's administrator."
 
-    var kaucja_successfully_granted = "&aPomyślnie nadano &b[(amount)] &abutelek kaucyjnych!"
-    var can_economy_work = "&bCzy butelki kaucyjne mogą działać na ekonomii: [(canthey)]"
-    var is_economy_on = "&bCzy butelki kaucyjne aktualnie działają na ekonomii: [(on)]"
-    var unknown_panel_option = "&cNieznana opcja! Opcje: &b([(options)])&c!"
-    var successfully_exchanged_vault = "&aZamieniłeś butelki kaucyjne na &6[(money)]$!"
-    var successfully_exchanged_item = "&aZamieniłeś butelki kaucyjne na &6[(amount)] &azłotych monetek!"
+    var kaucja_successfully_granted = "&aSuccessfully granted &b[(amount)] &adeposit bottles!"
+    var can_economy_work = "&bCan deposit bottles work on Vault: [(toggle)]"
+    var is_economy_on = "&bDo deposit bottles work on Vault: [(toggle)]"
+    var unknown_panel_option = "&cUnknown option! Possible options: &b([(options)])&c!"
+    var successfully_exchanged_vault = "&aSuccessfully exchanged deposit bottles for &6[(money)]$!"
+    var successfully_exchanged_item = "&aSuccessfully exchanged deposit bottles for &6[(amount)] &agolden nuggets!"
 
-    var YES = "&aTak"
-    var NO = "&cNie"
+    var YES = "&aYes"
+    var NO = "&cNo"
 }
 
 object Inside {
