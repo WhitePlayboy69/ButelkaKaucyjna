@@ -2,6 +2,12 @@ package xyz.playboy
 
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
+import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.inventory.EquipmentSlot
+import org.bukkit.inventory.ItemStack
+import org.bukkit.plugin.java.JavaPlugin
 import kotlin.random.Random
 
 fun onChance(chance: Int): Boolean {
@@ -45,6 +51,41 @@ fun getThemMobs(): Map<EntityType, Int> = mapOf(
 fun fix(text: String): String {
     return text.replace("&", "§")
 }
+
+fun exchange(plugin: ButelkiKaucyjne, who: Player) {
+    val key = getKeyId(plugin)
+    val kaucyjna = getKaucyjna(key, 1)
+
+    val holds = who.inventory.itemInMainHand
+
+    val amount = holds.amount
+
+    if (Inside.with_vault) {
+        val conversion = holds.amount * FromConfig.exchange_yes_amount
+        val response = plugin.economy?.depositPlayer(who, conversion)
+        if (response?.transactionSuccess() == true) {
+            who.inventory.setItemInMainHand(ItemStack.empty())
+            who.sendMessage(fix(Messages.successfully_exchanged_vault.replaceify(mapOf("money" to conversion))))
+        } else {
+            who.sendMessage(fix(Messages.could_not_exchange))
+        }
+    } else {
+        who.inventory.setItemInMainHand(ItemStack.empty())
+        who.inventory.addItem(
+            ItemStack(
+                (Material.matchMaterial(FromConfig.exchange_material) ?: Material.GOLD_NUGGET),
+                (amount * FromConfig.exchange_no_amount)
+            )
+        )
+        who.sendMessage(fix(Messages.successfully_exchanged_item.replaceify(mapOf("amount" to amount))))
+    }
+}
+
+//
+//
+// EXTENSIONS
+//
+//
 
 fun List<String>.complete(arg: String): List<String> =
     filter { it.startsWith(arg, ignoreCase = true) }

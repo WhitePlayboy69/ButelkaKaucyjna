@@ -1,5 +1,5 @@
 name: "ButelkaKaucyjna"
-version: "1.1"
+version: "1.2"
 main: xyz.playboy.ButelkiKaucyjne
 author: "WhitePlayboy69"
 description: "Plugin który dodaje butelki kaucyjne"
@@ -15,11 +15,17 @@ commands:
   panel:
     description: "Pozwala operować na pluginie"
     usage: /panel <opcja>
+  wymien:
+    description: "Pozwala wymienić butelki kaucyjne"
+    usage: /wymien
 
 permissions:
   butelki.nadaj:
     description: "Pozwala ci nadać butelkę kaucyjną"
     default: op
+  butelki.wymien:
+    description: "Pozwala ci wymienić butelkę kaucyjną"
+    default: true
   butelki.panel.reload:
     description: "Pozwala ci reloadować config pluginu"
     default: op

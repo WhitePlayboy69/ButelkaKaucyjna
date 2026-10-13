@@ -30,7 +30,7 @@ class ButelkiKaucyjne : JavaPlugin() {
             }
         }
 
-        // ^ useless but whatever
+        // ay i thought this was useless but is not
 
         val yaml = File(dataFolder, "languages/${FromConfig.language}.yml")
         languageConfig = YamlConfiguration.loadConfiguration(yaml)
@@ -66,6 +66,7 @@ class ButelkiKaucyjne : JavaPlugin() {
         getCommand("informacje")?.setExecutor(InfoCommand())
         getCommand("nadaj")?.setExecutor(NadajCommand(this))
         getCommand("panel")?.setExecutor(PanelCommand(this))
+        getCommand("wymien")?.setExecutor(WymienCommand(this))
 
         server.pluginManager.registerEvents(WaitListener(), this)
         server.pluginManager.registerEvents(RealListener(this), this)

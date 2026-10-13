@@ -8,6 +8,7 @@ messages:
     wrong-args-nadaj: "&cCorrect usage: &f/nadaj <player> <amount>&c!"
     kaucja-successfully-granted: "&aSuccessfully granted &b[(amount)] &adeposit bottles!" # [(amount)]
     unknown-panel-option: "&cUnknown option! Possible options: &b([(options)])&c!" # [(options)]
+    cannot-execute-as-console: "&cYou cannot execute this command as a console!"
 
   gameplay:
     could-not-exchange: "&cCouldn't exchange deposit bottles! Contact with server's administrator."

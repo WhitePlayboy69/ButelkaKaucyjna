@@ -4,6 +4,7 @@ import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.command.ConsoleCommandSender
 import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
 
@@ -122,5 +123,26 @@ class PanelCommand(private val plugin: ButelkiKaucyjne) : TabExecutor {
             else -> emptyList()
             // huj
         }
+    }
+}
+
+class WymienCommand(private val plugin: ButelkiKaucyjne) : CommandExecutor {
+    override fun onCommand(who: CommandSender, what: Command, label: String, args: Array<out String>?): Boolean {
+        val key = getKeyId(plugin)
+        val kaucyjna = getKaucyjna(key, 1)
+
+        if (who is Player) {
+            val holds = who.inventory.itemInMainHand
+
+            val alright = kaucyjna.isSimilar(holds)
+
+            if (alright) {
+                exchange(plugin, who)
+            }
+        } else {
+            who.sendMessage(fix(Messages.cannot_execute_as_console))
+        }
+
+        return true
     }
 }

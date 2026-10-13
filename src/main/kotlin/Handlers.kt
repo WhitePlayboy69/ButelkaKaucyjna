@@ -14,6 +14,7 @@ fun associateMessages(yaml: YamlConfiguration) {
     Messages.kaucja_from_this_block = yaml.getString("messages.gameplay.kaucja-from-this-block") ?: "&aYou got a deposit bottle from this block!"
     Messages.kaucja_from_this_mob = yaml.getString("messages.gameplay.kaucja-from-this-mob") ?: "&aYou got a deposit bottle from this mob!"
     Messages.could_not_exchange = yaml.getString("messages.gameplay.could-not-exchange") ?: "&cCouldn't exchange deposit bottles! Contact with server's administrator."
+    Messages.cannot_execute_as_console = yaml.getString("messages.technical.cannot-execute-as-console") ?: "You cannot execute this command as a console!"
 
     Messages.kaucja_successfully_granted = yaml.getString("messages.technical.kaucja-successfully-granted") ?: "&aSuccessfully granted &b[(amount)] &adeposit bottles!"
     Messages.can_economy_work = yaml.getString("messages.economy.can-economy-work") ?: "&bCan deposit bottles work on Vault: [(toggle)]"
@@ -24,6 +25,7 @@ fun associateMessages(yaml: YamlConfiguration) {
 
     FromConfig.kaucyjna_name = yaml.getString("messages.other.kaucyjna-name") ?: "&6Deposit bottle"
     FromConfig.kaucyjna_lore = yaml.getString("messages.other.kaucyjna-lore") ?: "&fBottle, which you can exchange by clicking &7Shift + Right Click&f."
+
     Messages.YES = yaml.getString("messages.other.easy-yes") ?: "&aYes"
     Messages.NO = yaml.getString("messages.other.easy-no") ?: "&cNo"
 }
@@ -34,6 +36,7 @@ fun associateConfig(config: FileConfiguration) {
     FromConfig.allow_greeting_message = config.getBoolean("allow-greeting-message")
     FromConfig.kaucyjna_with_infinity = config.getBoolean("kaucyjna-with-infinity")
     FromConfig.disable_kaucyjna_lore = config.getBoolean("disable-kaucyjna-lore")
+    FromConfig.exchange_by_action = config.getBoolean("exchange-by-action")
 
     Inside.with_vault = Inside.able_to_vault && config.getBoolean("use-vault-if-possible")
 

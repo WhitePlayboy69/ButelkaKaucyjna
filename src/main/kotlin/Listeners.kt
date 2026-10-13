@@ -70,33 +70,20 @@ class RealListener(private val plugin: ButelkiKaucyjne) : Listener {
 class ExchangeListener(private val plugin: ButelkiKaucyjne) : Listener {
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     fun onExchange(event: PlayerInteractEvent) {
-        val key = getKeyId(plugin)
-        val kaucyjna = getKaucyjna(key, 1)
+        if (FromConfig.exchange_by_action) {
+            val key = getKeyId(plugin)
+            val kaucyjna = getKaucyjna(key, 1)
 
-        val who = event.player
-        val holds = who.inventory.itemInMainHand
+            val who = event.player
+            val holds = who.inventory.itemInMainHand
 
-        if (event.hand != EquipmentSlot.HAND) return
-        if (!who.isSneaking) return
-        if (!kaucyjna.isSimilar(holds)) return
+            if (!who.isSneaking) return
+            if (!kaucyjna.isSimilar(holds)) return
 
-        val alright = event.action in listOf(Action.RIGHT_CLICK_BLOCK)
-        val amount = holds.amount
+            val alright = event.action in listOf(Action.RIGHT_CLICK_BLOCK)
 
-        if (alright) {
-            if (Inside.with_vault) {
-                val conversion = holds.amount * FromConfig.exchange_yes_amount
-                val response = plugin.economy?.depositPlayer(who, conversion)
-                if (response?.transactionSuccess() == true) {
-                    who.inventory.setItemInMainHand(ItemStack.empty())
-                    who.sendMessage(fix(Messages.successfully_exchanged_vault.replaceify(mapOf("money" to conversion))))
-                } else {
-                    who.sendMessage(fix(Messages.could_not_exchange))
-                }
-            } else {
-                who.inventory.setItemInMainHand(ItemStack.empty())
-                who.inventory.addItem(ItemStack((Material.matchMaterial(FromConfig.exchange_material) ?: Material.GOLD_NUGGET), (amount * FromConfig.exchange_no_amount)))
-                who.sendMessage(fix(Messages.successfully_exchanged_item.replaceify(mapOf("amount" to amount))))
+            if (alright) {
+                exchange(plugin, who)
             }
         }
     }

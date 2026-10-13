@@ -24,6 +24,10 @@ kaucyjna-with-infinity: true
 use-vault-if-possible: true
 exchange-material: "gold_nugget"
 
+# exchange-by-action: if true, exchanging will be by Shift + Right Click & /wymien.
+# If false, exchanging will only happen with /wymien.
+exchange-by-action: true
+
 # exchange-no-amount: if economy is not set up on this server.
 # exchange-yes-amount: if economy is set up on this server.
 exchange-no-amount: 1

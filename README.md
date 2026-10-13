@@ -9,10 +9,11 @@ Plugin that adds deposit bottles
 - **/nadaj \<player?\> \<amount?\> command that grants \<player\> \<amount\> of deposit bottles (perm: butelki.nadaj)**
 - **/panel \<option\> command (perm: butelki.panel)**
   - **help**, **reload**, **check-vault**
+- **/wymien command that exchanges the deposit bottles (perm: butelki.wymien)**
 - **Getting deposit bottles from specific ores**
 - **Getting deposit bottles from killing mobs**
   - **Zombie, skeleton, creeper, spider, enderman**
-- **Exchanging deposit bottles (Shift + Right Click) (items or money, depending on the server config)**
+- **Exchanging deposit bottles (Shift + Right Click or /wymien) (items or money, depending on the server config)**
 - **Config**
   - `allow-greeting-message`
   - **drop chances from specific ores**
@@ -23,6 +24,7 @@ Plugin that adds deposit bottles
     - `exchange-material` (item, that player gets, if economy is not set up)
     - `exchange-no-amount` (amount of `exchange-material`, if economy is not set up)
     - `exchange-yes-amount` (amount of money, if economy is not set up)
+    - `exchange-by-action` (if u want to exchange with Shift + Right Click)
   - **configuration of every\* message**
 
 # Languages
@@ -33,6 +35,9 @@ Plugin that adds deposit bottles
 - **butelki.nadaj**
   - Allows granting bottles with /nadaj
   - By default, it's for **ops**
+- **butelki.wymien**
+  - Allows exchanging deposit bottles with /wymien
+  - By default, it's for **everyone**
 - **butelki.panel:**
   - **butelki.panel.help**
     - Allows checking plugin's help
@@ -58,10 +63,11 @@ Plugin that adds deposit bottles
 - **Komendę /nadaj \<gracz?\> \<ilość?\> która nadaje \<graczowi\> \<ilość\> butelek kaucyjnych (permisja: butelki.nadaj)**
 - **Komendę /panel \<opcja\> (permisja: butelki.panel)**:
   - **help**, **reload**, **check-vault**
+- **Komendę /wymien która wymienia butelki kaucyjne (permisja: butelki.wymien)**
 - **Wydobywanie butelek kaucyjnych z danych rud**
 - **Dostawanie butelek kaucyjnych z zabijania mobów**
   - **Zombie, szkielet, creeper, pająk, enderman**
-- **Wymienianie butelek kaucyjnych (Shift + PPM) (na itemy lub pieniądze w ekonomii w zależności od konfiguracji serwera)**
+- **Wymienianie butelek kaucyjnych (Shift + PPM lub /wymien) (na itemy lub pieniądze w ekonomii w zależności od konfiguracji serwera)**
 - **Config**
   - `allow-greeting-message`
   - **szanse dropów z rud**
@@ -72,6 +78,7 @@ Plugin that adds deposit bottles
     - `exchange-material` (item, który dostaje osoba po wymienieniu jeśli ekonomia nie jest skonfigurowana)
     - `exchange-no-amount` (ilość `exchange-material`, jeśli ekonomia nie jest skonfigurowana)
     - `exchange-yes-amount` (ilość dolarów po wymienieniu jeśli ekonomia jest skonfigurowana)
+    - `exchange-by-action` (czy można wymienić kaucyjne za pomocą Shift + PPM)
   - **konfiguracja wszystkich wiadomości**
 
 # Języki
@@ -82,6 +89,9 @@ Plugin that adds deposit bottles
 - **butelki.nadaj**
   - Pozwala nadawać butelki komendą /nadaj
   - Domyślnie jest **dla operatorów**
+- **butelki.wymien**
+  - Pozwala wymieniać butelki kaucyjne komendą /wymien
+  - Domyślnie jest **dla każdego**
 - **butelki.panel:**
   - **butelki.panel.help**
     - Pozwala zobaczyć pomoc pluginu

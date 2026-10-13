@@ -6,6 +6,7 @@ object FromConfig {
     var allow_greeting_message = true
     var kaucyjna_with_infinity = true
     var disable_kaucyjna_lore = false
+    var exchange_by_action = true
 
     var kaucyjna_name = "&6Deposit bottle"
     var kaucyjna_lore = "&fBottle, which you can exchange by clicking &7Shift + Right Click&f."
@@ -42,6 +43,7 @@ object Messages {
     var kaucja_from_this_block = "&aYou got a deposit bottle from this block!"
     var kaucja_from_this_mob = "&aYou got a deposit bottle from this mob!"
     var could_not_exchange = "&cCouldn't exchange deposit bottles! Contact with server's administrator."
+    var cannot_execute_as_console = "&cYou cannot execute this command as a console!"
 
     var kaucja_successfully_granted = "&aSuccessfully granted &b[(amount)] &adeposit bottles!"
     var can_economy_work = "&bCan deposit bottles work on Vault: [(toggle)]"

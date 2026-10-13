@@ -8,6 +8,7 @@ messages:
     wrong-args-nadaj: "&cPoprawne użycie: &f/nadaj <gracz> <ilość>&c!"
     kaucja-successfully-granted: "&aPomyślnie nadano &b[(amount)] &abutelek kaucyjnych!" # [(amount)]
     unknown-panel-option: "&cNieznana opcja! Opcje: &b([(options)])&c!" # [(options)]
+    cannot-execute-as-console: "&cNie możesz wykonać tej komendy jako konsola!"
 
   gameplay:
     could-not-exchange: "&cNie można było wymienić butelek kaucyjnych! Skontaktuj się z administratorem."
